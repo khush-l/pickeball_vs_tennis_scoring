@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+:root {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --color-bg: #f5f4f0;
+  --color-navy: #0f1729;
+  --color-pb: #3b82f6;
+  --color-tn: #f97316;
+  --color-accent: #84cc16;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-navy);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+}
