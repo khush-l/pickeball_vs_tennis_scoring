@@ -71,7 +71,7 @@ export default function ComebackSection() {
         <p className="text-slate-500 leading-relaxed">
           Enter any score state and compute the probability that Player A wins from that
           position across a range of rally skill values. Pickleball uses{' '}
-          <strong>side-out scoring</strong> — only the server earns a point on a won rally,
+          <strong>side-out scoring</strong>: only the server earns a point on a won rally,
           so who holds serve at a given moment matters.
           Error bars show 95% bootstrap confidence intervals.
         </p>
@@ -99,7 +99,7 @@ export default function ComebackSection() {
         {sport === 'pb' ? (
           <div>
             <p className="text-sm font-semibold text-slate-600 mb-3">
-              Current game score — side-out scoring, first to 11 win by 2
+              Current game score (side-out scoring, first to 11 win by 2)
             </p>
             <div className="flex items-center gap-4 flex-wrap mb-4">
               <label className="flex flex-col gap-1">
@@ -180,7 +180,7 @@ export default function ComebackSection() {
       {results && (
         <div className="bg-white border border-slate-200 rounded-xl p-5">
           <p className="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-1">
-            Comeback probability — {scoreLabel}
+            Comeback probability: {scoreLabel}
           </p>
           <p className="text-xs text-slate-400 mb-4">Error bars = 95% bootstrap CI across p values</p>
           <ResponsiveContainer width="100%" height={280}>

@@ -42,8 +42,8 @@ export default function UpsetSection() {
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-slate-900 mb-2">Upset Probability</h2>
         <p className="text-slate-500 leading-relaxed">
-          An <strong>upset</strong> occurs when the stronger player — Player A with{' '}
-          <span className="font-mono">p &gt; 0.50</span> — still loses the match. Drag
+          An <strong>upset</strong> occurs when the stronger player (Player A, with{' '}
+          <span className="font-mono">p &gt; 0.50</span>) still loses the match. Drag
           the slider to see how upset frequency changes with the skill gap.
         </p>
       </div>
@@ -51,7 +51,7 @@ export default function UpsetSection() {
       {/* Slider */}
       <div className="bg-white border border-slate-200 rounded-xl p-6 mb-6">
         <label className="block text-sm font-semibold text-slate-600 mb-3">
-          Rally win probability —{' '}
+          Rally win probability:{' '}
           <span className="font-mono text-blue-700">p = {p.toFixed(2)}</span>
         </label>
         <input
@@ -60,7 +60,7 @@ export default function UpsetSection() {
           className="w-full accent-blue-600 h-2 cursor-pointer"
         />
         <div className="flex justify-between text-xs text-slate-400 mt-1 font-mono">
-          <span>0.50 — even skill</span><span>0.65</span><span>0.80 — dominant</span>
+          <span>0.50 (even)</span><span>0.65</span><span>0.80 (dominant)</span>
         </div>
       </div>
 

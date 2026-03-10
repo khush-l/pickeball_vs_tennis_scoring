@@ -20,7 +20,7 @@ const S1 = () => (
     </div>
     <p className="text-slate-600 text-sm leading-relaxed mb-2">
       <strong>Side-out scoring (pickleball):</strong> Only the server earns a point on a
-      won rally. If the non-server wins the rally, service transfers — no point is awarded.
+      won rally. If the non-server wins the rally, service transfers; no point is awarded.
       Let <InlineMath math="s_t \in \{A, B\}" /> be the server at time <InlineMath math="t" />.
       Then the scoring update is:
     </p>
@@ -98,7 +98,7 @@ const S5 = () => (
 const S6 = () => (
   <div className="mb-4">
     <h3 className="text-base font-semibold text-slate-700 mb-3 flex items-center gap-2">
-      <span className="text-slate-400 font-mono text-sm">§5</span> Uncertainty — Nonparametric Bootstrap
+      <span className="text-slate-400 font-mono text-sm">§5</span> Uncertainty: Nonparametric Bootstrap
     </h3>
     <p className="text-slate-600 mb-3 leading-relaxed text-sm">
       Win probability estimates are binary outcomes (<InlineMath math="W_k \in \{0,1\}" />).
