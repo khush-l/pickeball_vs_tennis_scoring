@@ -70,10 +70,11 @@ export default function ComebackSection() {
         <h2 className="text-2xl font-bold text-slate-900 mb-2">Comeback Explorer</h2>
         <p className="text-slate-500 leading-relaxed">
           Enter any score state and compute the probability that Player A wins from that
-          position across a range of rally skill values. Pickleball uses{' '}
+          position across a range of rally skill values (<span className="font-semibold text-slate-600">N = 2,000</span>{' '}
+          simulations per point). Pickleball uses{' '}
           <strong>side-out scoring</strong>: only the server earns a point on a won rally,
-          so who holds serve at a given moment matters.
-          Error bars show 95% bootstrap confidence intervals.
+          so serving status at the trailing state significantly affects comeback odds.
+          Error bars show 95% bootstrap confidence intervals (B = 1,000 resamples).
         </p>
       </div>
 

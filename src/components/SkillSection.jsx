@@ -18,7 +18,7 @@ export default function SkillSection() {
   const compute = useCallback((val) => {
     setLoading(true);
     setTimeout(() => {
-      setPbRes(estimateWinProb((pp) => pickleballGame(pp).winner === 'A', val));
+      setPbRes(estimateWinProb((pp) => pickleballGame(pp, 0, 0, Math.random() < 0.5 ? 'A' : 'B').winner === 'A', val));
       setTnRes(estimateWinProb(tennisSet, val));
       setLoading(false);
     }, 0);
@@ -35,9 +35,10 @@ export default function SkillSection() {
         <h2 className="text-2xl font-bold text-slate-900 mb-2">Skill &amp; Win Probability</h2>
         <p className="text-slate-500 leading-relaxed">
           Drag the slider to set Player A's rally win probability{' '}
-          <span className="font-mono font-semibold text-slate-700">p</span>. The cards and
-          chart update to show how each scoring system translates that raw skill advantage
-          into a match win probability. Shaded bands show 95% bootstrap confidence intervals.
+          <span className="font-mono font-semibold text-slate-700">p</span>. Each estimate
+          uses <span className="font-semibold text-slate-600">N = 2,000</span> simulated
+          matches. Shaded bands show 95% bootstrap confidence intervals (B = 1,000
+          resamples), which agree closely with the CLT normal approximation.
         </p>
       </div>
 
@@ -93,7 +94,7 @@ export default function SkillSection() {
             margin={{ top: 5, right: 20, left: 0, bottom: 20 }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-            <XAxis dataKey="p" tickFormatter={(v) => v.toFixed(2)} label={{ value: 'Rally win probability p', position: 'insideBottom', offset: -12, fontSize: 12 }} tick={{ fontSize: 11 }} />
+            <XAxis dataKey="p" tickFormatter={(v) => v.toFixed(2)} domain={['dataMin', 'dataMax']} label={{ value: 'Rally win probability p', position: 'insideBottom', offset: -12, fontSize: 12 }} tick={{ fontSize: 11 }} />
             <YAxis tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} domain={[0, 1]} tick={{ fontSize: 11 }} />
             <Tooltip formatter={(v, name) => [`${(v * 100).toFixed(1)}%`, name]} labelFormatter={(v) => `p = ${v}`} />
             <Legend verticalAlign="top" />

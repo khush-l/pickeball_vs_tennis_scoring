@@ -149,7 +149,8 @@ export function buildCurveData(n = 2000) {
   const points = [];
   for (let i = 0; i <= 30; i++) {
     const p = 0.50 + i * (0.30 / 30);
-    const pbRes = estimateWinProb((pp) => pickleballGameWon(pp), p, n);
+    // randomize starting server each trial so neither player has a structural advantage
+    const pbRes = estimateWinProb((pp) => pickleballGameWon(pp, 0, 0, Math.random() < 0.5 ? 'A' : 'B'), p, n);
     const tnRes = estimateWinProb(tennisSet, p, n);
     points.push({
       p: parseFloat(p.toFixed(3)),

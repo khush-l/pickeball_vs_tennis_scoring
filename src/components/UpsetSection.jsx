@@ -27,7 +27,7 @@ export default function UpsetSection() {
   const compute = useCallback((val) => {
     setLoading(true);
     setTimeout(() => {
-      const pb = estimateWinProb((pp) => pickleballGame(pp).winner === 'A', val);
+      const pb = estimateWinProb((pp) => pickleballGame(pp, 0, 0, Math.random() < 0.5 ? 'A' : 'B').winner === 'A', val);
       const tn = estimateWinProb(tennisSet, val);
       setPbRes({ mean: 1 - pb.mean, ciLow: 1 - pb.ciHigh, ciHigh: 1 - pb.ciLow });
       setTnRes({ mean: 1 - tn.mean, ciLow: 1 - tn.ciHigh, ciHigh: 1 - tn.ciLow });
@@ -43,8 +43,10 @@ export default function UpsetSection() {
         <h2 className="text-2xl font-bold text-slate-900 mb-2">Upset Probability</h2>
         <p className="text-slate-500 leading-relaxed">
           An <strong>upset</strong> occurs when the stronger player (Player A, with{' '}
-          <span className="font-mono">p &gt; 0.50</span>) still loses the match. Drag
-          the slider to see how upset frequency changes with the skill gap.
+          <span className="font-mono">p &gt; 0.50</span>) still loses the match. Upset
+          probability is estimated as <span className="font-semibold text-slate-600">1 - P(win)</span>{' '}
+          from <span className="font-semibold text-slate-600">N = 2,000</span> simulated matches.
+          Shaded bands show 95% bootstrap confidence intervals (B = 1,000 resamples).
         </p>
       </div>
 
@@ -106,7 +108,7 @@ export default function UpsetSection() {
             margin={{ top: 5, right: 20, left: 0, bottom: 20 }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-            <XAxis dataKey="p" tickFormatter={(v) => v.toFixed(2)} label={{ value: 'Rally win probability p', position: 'insideBottom', offset: -12, fontSize: 12 }} tick={{ fontSize: 11 }} />
+            <XAxis dataKey="p" tickFormatter={(v) => v.toFixed(2)} domain={['dataMin', 'dataMax']} label={{ value: 'Rally win probability p', position: 'insideBottom', offset: -12, fontSize: 12 }} tick={{ fontSize: 11 }} />
             <YAxis tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} domain={[0, 0.55]} tick={{ fontSize: 11 }} />
             <Tooltip formatter={(v, name) => [`${(v * 100).toFixed(1)}%`, name]} labelFormatter={(v) => `p = ${v}`} />
             <Legend verticalAlign="top" />
