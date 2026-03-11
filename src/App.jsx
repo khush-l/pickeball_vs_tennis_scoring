@@ -3,7 +3,6 @@ import IntroSection from './components/IntroSection';
 import SkillSection from './components/SkillSection';
 import UpsetSection from './components/UpsetSection';
 import ComebackSection from './components/ComebackSection';
-import SimulatorSection from './components/SimulatorSection';
 import MathSection from './components/MathSection';
 import WriteupSection from './components/WriteupSection';
 
@@ -12,7 +11,6 @@ const TABS = [
   { id: 'skill',     label: 'Win Probability' },
   { id: 'upset',     label: 'Upset Probability' },
   { id: 'comeback',  label: 'Comeback Explorer' },
-  { id: 'simulator', label: 'Match Simulator' },
   { id: 'writeup',   label: 'Writeup' },
 ];
 
@@ -24,7 +22,6 @@ function App() {
     skill:     <><SkillSection /><MathSection section="skill" /></>,
     upset:     <><UpsetSection /><MathSection section="upset" /></>,
     comeback:  <><ComebackSection /><MathSection section="comeback" /></>,
-    simulator: <><SimulatorSection /><MathSection section="simulator" /></>,
     writeup:   <WriteupSection />,
   };
 

@@ -18,12 +18,6 @@ const SECTIONS = [
     color: '#8b5cf6',
   },
   {
-    id: 'simulator',
-    label: 'Match Simulator',
-    desc: 'Step through a pickleball game rally by rally.',
-    color: '#06b6d4',
-  },
-  {
     id: 'writeup',
     label: 'Writeup',
     desc: 'Methodology, derivations, simulation design, and results.',
