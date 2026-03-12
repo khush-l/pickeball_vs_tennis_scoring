@@ -26,9 +26,9 @@ const SECTIONS = [
 ];
 
 const STATS = [
-  { value: 'p', label: 'One parameter', sub: 'P(A wins a rally)' },
-  { value: '2k', label: 'Trials per point', sub: 'CLT normal approximation' },
-  { value: '1k', label: 'Bootstrap resamples', sub: '95% CI per estimate' },
+  { value: 'p', label: 'One parameter', sub: 'P(A wins rally)' },
+  { value: '2k', label: 'Trials per point', sub: 'CLT approx.' },
+  { value: '1k', label: 'Bootstrap resamples', sub: '95% CI' },
 ];
 
 export default function IntroSection({ onNavigate }) {
@@ -51,17 +51,31 @@ export default function IntroSection({ onNavigate }) {
         />
 
         {/* Two-column layout */}
-        <div className="relative z-10 max-w-6xl mx-auto px-8 pt-24 pb-20 flex flex-col lg:flex-row items-center gap-12">
+        <div className="relative z-10 w-full mx-auto px-8 pt-20 pb-16 flex flex-col lg:flex-row items-center gap-10" style={{ maxWidth: '1400px' }}>
 
           {/* Left: text */}
-          <div className="flex-1 flex flex-col items-start">
-
+          <div className="flex flex-col items-start flex-shrink-0 relative" style={{ width: '500px' }}>
+            {/* Meme watermark behind title */}
+            <img
+              src="/skill-issue.jpg"
+              alt=""
+              aria-hidden="true"
+              className="absolute pointer-events-none select-none"
+              style={{
+                width: '220px',
+                top: '-10px',
+                left: '-20px',
+                opacity: 0.12,
+                transform: 'rotate(-8deg)',
+                borderRadius: '8px',
+              }}
+            />
             {/* Title */}
             <h1
               className="text-white mb-6 leading-[1.05]"
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2.8rem, 6vw, 5.5rem)',
+                fontSize: 'clamp(2.8rem, 5vw, 5rem)',
                 fontWeight: 900,
               }}
             >
@@ -72,25 +86,25 @@ export default function IntroSection({ onNavigate }) {
 
             {/* Subtitle */}
             <p
-              className="text-stone-300 mb-10 max-w-lg leading-relaxed"
-              style={{ fontSize: 'clamp(1rem, 1.8vw, 1.15rem)' }}
+              className="text-stone-300 mb-10 leading-relaxed"
+              style={{ fontSize: '1.05rem' }}
             >
               This project compares <span style={{ color: '#93c5fd' }}>pickleball</span> and{' '}
               <span style={{ color: '#fdba74' }}>tennis</span>: if two players differ
               by a tiny margin of skill, does the <em>scoring system</em> decide who wins?
             </p>
 
-            {/* Stat pills */}
-            <div className="flex flex-wrap gap-3 mb-10">
+            {/* Stat pills — all on one row */}
+            <div className="flex gap-3 w-full">
               {STATS.map(({ value, label, sub }) => (
                 <div
                   key={label}
-                  className="rounded-xl px-5 py-4 border border-white/10"
+                  className="flex-1 rounded-xl px-4 py-3 border border-white/10"
                   style={{ background: 'rgba(255,255,255,0.06)' }}
                 >
                   <p
                     className="text-white font-bold leading-none mb-1"
-                    style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem' }}
+                    style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem' }}
                   >
                     {value}
                   </p>
@@ -102,19 +116,15 @@ export default function IntroSection({ onNavigate }) {
 
           </div>
 
-          {/* Right: meme image */}
-          <div className="flex-shrink-0 flex flex-col items-center gap-3 ml-8">
-            <div
-              className="overflow-hidden border-2 border-white/10 shadow-2xl"
-              style={{ width: 'clamp(200px, 20vw, 280px)' }}
-            >
+          {/* Right: image — takes remaining space, pushed to the right */}
+          <div className="flex-1 min-w-0 flex justify-end">
+            <div className="overflow-hidden rounded-2xl border-2 border-white/10 shadow-2xl" style={{ width: 'min(600px, 100%)' }}>
               <img
-                src="/skill-issue.jpg"
-                alt="Skill issue meme"
+                src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/7966/images/587f05a-7ec6-7aac-0a41-a18f1f170674_tennis-vs-pickleball.jpg"
+                alt="Tennis vs Pickleball"
                 className="w-full h-auto block"
               />
             </div>
-            <p className="text-stone-600 text-xs italic">the defense of every losing player</p>
           </div>
 
         </div>

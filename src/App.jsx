@@ -26,11 +26,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--color-bg)' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ background: 'var(--color-bg)' }}>
 
       {/* ── Nav bar ─────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-stone-200">
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-stone-200 overflow-hidden">
+        <div className="max-w-full mx-auto px-6 flex items-center justify-between">
 
           {/* Logo / wordmark */}
           <button
@@ -44,7 +44,7 @@ function App() {
 
           {/* Tab links */}
           <nav className="overflow-x-auto">
-            <div className="flex min-w-max">
+            <div className="flex">
               {TABS.filter(t => t.id !== 'intro').map(({ id, label }) => (
                 <button
                   key={id}
